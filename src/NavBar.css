@@ -1,0 +1,22 @@
+.NavBar__container {
+  margin-bottom: 16px;
+  background: black;
+  padding: 0 16px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.NavBar__container a {
+  text-decoration: none;
+  font-size: 1.2em;
+  margin-right: 24px;
+  color: white;
+  user-select: none;
+}
+
+a.NavBar__active-item {
+  color: #61dafb;
+  border-bottom: 1px solid #61dafb;
+}

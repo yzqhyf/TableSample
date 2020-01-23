@@ -1,0 +1,10 @@
+.Approved {
+  background-color: aquamarine;
+}
+.Denied {
+  background-color: antiquewhite;
+}
+.delete-link {
+  cursor: pointer;
+  text-decoration: underline;
+}
