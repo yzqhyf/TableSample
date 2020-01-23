@@ -1,5 +1,5 @@
 import mockRequests from "./requests.json";
-import { getLists } from "./action";
+import { getLists } from "./action/action";
 
 export const getRequestsSync = () => mockRequests;
 

@@ -1,27 +1,32 @@
 import React, { Fragment } from "react";
+import ReactTooltip from "react-tooltip";
 import { connect } from "react-redux";
 import { getRequests } from "./Api";
-import { deleteRow, filterByStat } from "./action";
+import { deleteRow, filterByStat } from "./action/action";
 
 import "./Request.css";
 
 class Table extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      date: new Date()
+    };
   }
 
   componentDidMount() {
     this.props.dispatch(getRequests());
   }
 
-  deleteRow = id => {
-    console.log(id);
+  deleteRow = (id, event) => {
+    event.preventDefault();
+    // console.log(id);
     this.props.dispatch(deleteRow(id));
   };
 
   handleDropDownChange = event => {
     // console.log("111", event);
+    event.preventDefault();
     this.props.dispatch(filterByStat(event.target.value));
   };
 
@@ -32,7 +37,10 @@ class Table extends React.Component {
         <td>{list.status}</td>
         <td>{list.created_at}</td>
         <td>{list.updated_at}</td>
-        <td className="delete-link" onClick={() => this.deleteRow(list.id)}>
+        <td
+          className="delete-link"
+          onClick={event => this.deleteRow(list.id, event)}
+        >
           Delete
         </td>
       </tr>
@@ -60,6 +68,7 @@ class Table extends React.Component {
           {tableHeader}
           {requestTableRow}
         </table>
+        <ReactTooltip />
       </div>
     );
   }

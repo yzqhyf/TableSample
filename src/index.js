@@ -5,9 +5,9 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
-import { fetchTableList, dropdownFilter } from "./reducer";
+import { fetchTableList, dropdownFilter } from "./reduces/reducer";
 import NavBar from "./NavBar";
-import Instructions from "./Instructions";
+// import Instructions from "./Instructions";
 import Wireframe from "./Wireframe";
 import Requests from "./Requests";
 
@@ -22,7 +22,7 @@ const ProgrammerTest = () => (
         <Switch>
           <Route path="/requests" component={Requests} exact />
           <Route path="/wireframe" component={Wireframe} exact />
-          <Route component={Instructions} />
+          {/* <Route component={Instructions} /> */}
         </Switch>
       </Fragment>
     </BrowserRouter>
