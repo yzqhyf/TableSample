@@ -6,10 +6,10 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 import { fetchTableList, dropdownFilter } from "./reduces/reducer";
-import NavBar from "./NavBar";
+import NavBar from "./component/NavBar";
 // import Instructions from "./Instructions";
-import Wireframe from "./Wireframe";
-import Requests from "./Requests";
+import Wireframe from "./component/Wireframe";
+import Requests from "./component/Requests";
 
 const rootReducer = combineReducers({ fetchTableList, dropdownFilter });
 const store = createStore(rootReducer, applyMiddleware(thunk));

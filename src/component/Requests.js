@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import ReactTooltip from "react-tooltip";
 import { connect } from "react-redux";
-import { getRequests } from "./Api";
-import { deleteRow, filterByStat } from "./action/action";
+import { getRequests } from "../Api";
+import { deleteRow, filterByStat } from "../action/action";
+import Clock from "./Clock";
 
 import "./Request.css";
 
@@ -64,6 +65,7 @@ class Table extends React.Component {
           <option value="Pending">Filter Pending</option>
           <option value="Denied">Filter Denied</option>
         </select>
+        <Clock />
         <table>
           {tableHeader}
           {requestTableRow}
