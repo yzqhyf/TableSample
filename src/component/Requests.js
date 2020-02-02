@@ -34,8 +34,8 @@ class Table extends React.Component {
   render() {
     const requestTableRow = this.props.lists.map(list => (
       <tr key={list.id} className={list.status}>
-        <td>{list.title}</td>
-        <td>{list.status}</td>
+        <td className="tableLeft">{list.title}</td>
+        <td className="tableLeft">{list.status}</td>
         <td>{list.created_at}</td>
         <td>{list.updated_at}</td>
         <td
@@ -49,8 +49,8 @@ class Table extends React.Component {
     const tableHeader = (
       <Fragment>
         <tr>
-          <th>Title</th>
-          <th>Status</th>
+          <th className="tableLeft">Title</th>
+          <th className="tableLeft">Status</th>
           <th>Created</th>
           <th>Updated</th>
           <th>Delete</th>
@@ -59,14 +59,20 @@ class Table extends React.Component {
     );
     return (
       <div>
-        <select onChange={e => this.handleDropDownChange(e)}>
-          <option value="SHOW_ALL">Filter All</option>
-          <option value="Approved">Filter Approved</option>
-          <option value="Pending">Filter Pending</option>
-          <option value="Denied">Filter Denied</option>
-        </select>
+        <div className="filterDropdown">
+          <span className="filterText">Filter By Status</span>
+          <select
+            className="filterSelect"
+            onChange={e => this.handleDropDownChange(e)}
+          >
+            <option value="SHOW_ALL">Filter All</option>
+            <option value="Approved">Filter Approved</option>
+            <option value="Pending">Filter Pending</option>
+            <option value="Denied">Filter Denied</option>
+          </select>
+        </div>
         <Clock />
-        <table>
+        <table className="requestTable">
           {tableHeader}
           {requestTableRow}
         </table>

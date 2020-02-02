@@ -4,7 +4,39 @@
 .Denied {
   background-color: antiquewhite;
 }
+
+.filterDropdown {
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.filterDropdown .filterText {
+  margin-left: 20px;
+}
+
+.filterDropdown .filterSelect {
+  margin-left: 20px;
+  width: 150px;
+}
+
 .delete-link {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.requestTable {
+  width: 100%;
+  border-spacing: 0px;
+}
+
+.requestTable td {
+  height: 30px;
+  text-align: center;
+  border-bottom: 3px solid white;
+}
+
+.requestTable .tableLeft {
+  text-align: left;
 }

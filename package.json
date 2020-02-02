@@ -6,6 +6,7 @@
   "main": "index.js",
   "dependencies": {
     "axios": "0.19.2",
+    "css-loader": "3.4.2",
     "react": "latest",
     "react-dom": "latest",
     "react-redux": "7.1.3",
