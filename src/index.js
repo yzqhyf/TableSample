@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Suspense, lazy } from "react";
 import { render } from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -7,24 +7,23 @@ import thunk from "redux-thunk";
 
 import { fetchTableList, dropdownFilter } from "./reduces/reducer";
 import NavBar from "./component/NavBar";
-// import Instructions from "./Instructions";
-import Wireframe from "./component/Wireframe";
-import Requests from "./component/Requests";
 
 const rootReducer = combineReducers({ fetchTableList, dropdownFilter });
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
+const Wireframe = React.lazy(() => import("./component/Wireframe"));
+const Requests = React.lazy(() => import("./component/Requests"));
+
 const ProgrammerTest = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <Fragment>
+      <Suspense fallback={<div>Loading...</div>}>
         <NavBar />
         <Switch>
           <Route path="/requests" component={Requests} exact />
           <Route path="/wireframe" component={Wireframe} exact />
-          {/* <Route component={Instructions} /> */}
         </Switch>
-      </Fragment>
+      </Suspense>
     </BrowserRouter>
   </Provider>
 );

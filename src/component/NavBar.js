@@ -8,13 +8,6 @@ const NavBar = () => (
     <NavLink activeClassName="NavBar__active-item" to="/requests" exact>
       Code
     </NavLink>
-    {/* <NavLink
-      activeClassName="NavBar__active-item"
-      to="/instructions"
-      exact
-    >
-      Instructions
-    </NavLink> */}
     <NavLink activeClassName="NavBar__active-item" to="/wireframe" exact>
       Wireframe
     </NavLink>

@@ -36,8 +36,8 @@ class Table extends React.Component {
       <tr key={list.id} className={list.status}>
         <td className="tableLeft">{list.title}</td>
         <td className="tableLeft">{list.status}</td>
-        <td>{list.created_at}</td>
-        <td>{list.updated_at}</td>
+        <td className="tableHide">{list.created_at}</td>
+        <td className="tableHide">{list.updated_at}</td>
         <td
           className="delete-link"
           onClick={event => this.deleteRow(list.id, event)}
@@ -51,8 +51,8 @@ class Table extends React.Component {
         <tr>
           <th className="tableLeft">Title</th>
           <th className="tableLeft">Status</th>
-          <th>Created</th>
-          <th>Updated</th>
+          <th className="tableHide">Created</th>
+          <th className="tableHide">Updated</th>
           <th>Delete</th>
         </tr>
       </Fragment>

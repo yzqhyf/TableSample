@@ -12,22 +12,24 @@ export const getRequestsSync = () => mockRequests;
 // export const getRequests = () => {
 //   return async dispatch => {
 //     let response = await new Promise((resolve, reject) => {
-//       setTimeout(() => resolve(mockRequests), 500);
+//       setTimeout(() => {
+//         resolve(mockRequests);
+//       }, 1000);
 //     });
 //     dispatch(getLists(response));
 //   };
 // };
 
-export const getRequests = () => {
-  return async dispatch => {
-    let response = await new Promise((resolve, reject) => {
-      setTimeout(() => {
+export const getRequests= () => {
+  return async dispatch=> {
+    let response = await new Promise((resolve, reject)=> {
+      setTimeout(()=> {
         resolve(mockRequests);
       }, 1000);
     });
     dispatch(getLists(response));
-  };
-};
+  }
+}
 
 export const getGithubInfo = () => {
   return async dispatch => {

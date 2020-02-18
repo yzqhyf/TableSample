@@ -7,8 +7,31 @@ const initialState = {
   filter: "SHOW_ALL"
 };
 
-export const fetchTableList = (state = initialState, action) => {
-  switch (action.type) {
+// export const fetchTableList = (state = initialState, action) => {
+//   switch (action.type) {
+//     case FETCH_DATA: {
+//       return {
+//         ...state,
+//         lists: action.lists
+//       };
+//     }
+//     case DELETE_ROW: {
+//       // console.log(state);
+//       const lists = state.lists.filter(list => list.id !== action.id);
+//       return {
+//         ...state,
+//         lists: [...lists]
+//       };
+//     }
+//     default: {
+//       return state;
+//     }
+//   }
+// };
+
+
+export const fetchTableList=(state=initialState, action)=> {
+  switch(action.type) {
     case FETCH_DATA: {
       return {
         ...state,
@@ -16,12 +39,11 @@ export const fetchTableList = (state = initialState, action) => {
       };
     }
     case DELETE_ROW: {
-      // console.log(state);
-      const lists = state.lists.filter(list => list.id !== action.id);
+      const lists=state.lists.filter(list=>list.id!==action.id);
       return {
         ...state,
-        lists: [...lists]
-      };
+        lists
+      }
     }
     default: {
       return state;
