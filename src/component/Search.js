@@ -5,33 +5,49 @@ const Search = props => {
   const [data, setData] = useState({ hits: [] });
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    const CancelToken = axios.CancelToken;
-    const source = CancelToken.source();
-    const fetchData = async () => {
-      try {
-        let response = await axios.get(
-          "https://hn.algolia.com/api/v1/search?query=" + query,
-          { cancelToken: source.token }
-        );
-        setData(response.data);
-      } catch (error) {
-        if (axios.isCancel(error)) {
-          console.log("request canceled");
-        }
-      }
-    };
+  // useEffect(() => {
+  //   const CancelToken = axios.CancelToken;
+  //   const source = CancelToken.source();
+  //   const fetchData = async () => {
+  //     try {
+  //       let response = await axios.get(
+  //         "https://hn.algolia.com/api/v1/search?query=" + query,
+  //         { cancelToken: source.token }
+  //       );
+  //       setData(response.data);
+  //     } catch (error) {
+  //       if (axios.isCancel(error)) {
+  //         console.log("request canceled");
+  //       }
+  //     }
+  //   };
 
-    fetchData();
-
-    return () => {
-      source.cancel("cancel the request!");
-    };
-  }, [query]);
+  //   fetchData();
+  //   return () => {
+  //     source.cancel();
+  //   };
+  // }, [query]);
 
   const handleChange = e => {
     setQuery(e.target.value);
   };
+
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    fetch("https://hn.algolia.com/api/v1/search?query=" + query, {
+      method: "GET",
+      mode: "cors",
+      signal: abortController.signal
+    })
+      .then(res => res.json())
+      .then(res => setData(res))
+      .catch(error => console.log(error));
+
+    return () => {
+      abortController.abort();
+    };
+  }, [query]);
 
   return (
     <div>
