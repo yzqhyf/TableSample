@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import { render } from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -13,6 +13,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const Wireframe = React.lazy(() => import("./component/Wireframe"));
 const Requests = React.lazy(() => import("./component/Requests"));
+const Search = React.lazy(() => import("./component/Search"));
 
 const ProgrammerTest = () => (
   <Provider store={store}>
@@ -22,6 +23,7 @@ const ProgrammerTest = () => (
         <Switch>
           <Route path="/requests" component={Requests} exact />
           <Route path="/wireframe" component={Wireframe} exact />
+          <Route path="/Search" component={Search} exact />
         </Switch>
       </Suspense>
     </BrowserRouter>

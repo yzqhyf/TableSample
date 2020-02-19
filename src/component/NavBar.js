@@ -11,6 +11,9 @@ const NavBar = () => (
     <NavLink activeClassName="NavBar__active-item" to="/wireframe" exact>
       Wireframe
     </NavLink>
+    <NavLink activeClassName="NavBar__active-item" to="/search" exact>
+      Search
+    </NavLink>
   </div>
 );
 
