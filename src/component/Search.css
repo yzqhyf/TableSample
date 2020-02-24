@@ -1,0 +1,37 @@
+.search-list {
+  margin-left: 15px;
+}
+
+.search-list > input {
+  padding: 0 10px;
+  width: 200px;
+  height: 35px;
+  border: none;
+  border-bottom: 2px solid #c6c6c6;
+  display: block;
+  background: transparent;
+}
+
+.search-list > input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #666666;
+}
+
+.search-list > ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+ul > li {
+  padding: 3px;
+}
+
+ul > li a {
+  text-decoration: none;
+  color: #084e8e;
+}
+
+ul > li a:hover {
+  text-decoration: underline;
+}

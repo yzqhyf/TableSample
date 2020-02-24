@@ -1,6 +1,6 @@
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import { render } from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
@@ -11,9 +11,9 @@ import NavBar from "./component/NavBar";
 const rootReducer = combineReducers({ fetchTableList, dropdownFilter });
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-const Wireframe = React.lazy(() => import("./component/Wireframe"));
-const Requests = React.lazy(() => import("./component/Requests"));
-const Search = React.lazy(() => import("./component/Search"));
+const Wireframe = lazy(() => import("./component/Wireframe"));
+const Requests = lazy(() => import("./component/Requests"));
+const Search = lazy(() => import("./component/Search"));
 
 const ProgrammerTest = () => (
   <Provider store={store}>
@@ -21,9 +21,16 @@ const ProgrammerTest = () => (
       <Suspense fallback={<div>Loading...</div>}>
         <NavBar />
         <Switch>
-          <Route path="/requests" component={Requests} exact />
-          <Route path="/wireframe" component={Wireframe} exact />
-          <Route path="/Search" component={Search} exact />
+          <Route path="/requests" exact>
+            <Requests />
+          </Route>
+          <Route path="/wireframe" exact>
+            <Wireframe />
+          </Route>
+          <Route path="/search" exact>
+            <Search />
+          </Route>
+          <Route exact path="/" render={() => <Redirect to="/search" />} />
         </Switch>
       </Suspense>
     </BrowserRouter>
