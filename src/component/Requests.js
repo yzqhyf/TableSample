@@ -73,8 +73,8 @@ class Table extends React.Component {
         </div>
         <Clock />
         <table className="requestTable">
-          {tableHeader}
-          {requestTableRow}
+          <thead>{tableHeader}</thead>
+          <tbody>{requestTableRow}</tbody>
         </table>
         <ReactTooltip />
       </div>
