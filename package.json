@@ -5,7 +5,7 @@
   "keywords": [],
   "main": "index.js",
   "dependencies": {
-    "axios": "0.19.2",
+    "axios": "1.6.0",
     "css-loader": "3.4.2",
     "react": "latest",
     "react-dom": "latest",
